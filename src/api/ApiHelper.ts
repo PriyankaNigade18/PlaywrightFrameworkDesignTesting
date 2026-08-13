@@ -52,6 +52,18 @@ async post(
     headers?: Record<string, string>
 ) {
 
+    console.log("POST URL:", `${this.baseUrl}${endpoint}`);
+
+    console.log(
+        "Authorization header exists:",
+        !!headers?.Authorization
+    );
+
+    console.log(
+        "Authorization starts with Bearer:",
+        headers?.Authorization?.startsWith("Bearer ")
+    );
+
     const response = await this.request.post(
         `${this.baseUrl}${endpoint}`,
         {
@@ -59,6 +71,8 @@ async post(
             data: payload
         }
     );
+
+    console.log("POST status:", response.status());
 
     const text = await response.text();
 

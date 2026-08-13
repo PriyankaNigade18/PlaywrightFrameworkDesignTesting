@@ -3,7 +3,11 @@
 
 import {test,expect} from "../../src/fixture/apiFixture.js"
 
-let token=process.env.APITOKEN!;
+//let token=process.env.APITOKEN;
+const token = process.env.APITOKEN;
+
+console.log("API_TOKEN exists:", !!token);
+console.log("API_TOKEN length:", token?.length);
 let auth_header={Authorization:`Bearer ${token}`}
 
 let userId:number;
