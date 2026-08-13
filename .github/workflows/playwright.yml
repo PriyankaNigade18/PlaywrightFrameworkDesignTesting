@@ -39,9 +39,9 @@ jobs:
           BASE_URL: ${{ secrets.BASE_URL }}
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
-          FN:${{ secrets.FN}}
-          LN:${{ secrets.LN}}
-          PC:${{ secrets.PC}}
+          FN: ${{ secrets.FN}}
+          LN: ${{ secrets.LN}}
+          PC: ${{ secrets.PC}}
           API_BASE_URL: ${{ secrets.API_BASE_URL }}
           API_TOKEN: ${{ secrets.API_TOKEN }}
           
