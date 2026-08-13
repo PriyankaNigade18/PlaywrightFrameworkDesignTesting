@@ -36,14 +36,15 @@ jobs:
         run: npx playwright test --project=chromium
         env:
           ENV: qa
-          BASE_URL: ${{ secrets.BASE_URL }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PASSWORD: ${{ secrets.PASSWORD }}
+          APPBASEURL: ${{ secrets.APPBASEURL }}
+          APPUSERNAME: ${{ secrets.APPUSERNAME }}
+          APPPASSWORD: ${{ secrets.APPPASSWORD }}
+          PRODUCT: ${{ secrets.PRODUCT }}
           FN: ${{ secrets.FN}}
           LN: ${{ secrets.LN}}
           PC: ${{ secrets.PC}}
-          API_BASE_URL: ${{ secrets.API_BASE_URL }}
-          API_TOKEN: ${{ secrets.API_TOKEN }}
+          APIBASEURL: ${{ secrets.API_BASE_URL }}
+          APITOKEN: ${{ secrets.API_TOKEN }}
           
 
       - name: Upload HTML Report
