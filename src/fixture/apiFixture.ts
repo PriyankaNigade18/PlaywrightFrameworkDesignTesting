@@ -16,7 +16,7 @@ export let test=baseTest.extend<apiFixture>({
         //create object
         let apiHelper=new ApiHelper(request,process.env.APIBASEURL!);
         //share it
-        use(apiHelper);
+        await use(apiHelper);
 
     }
 
