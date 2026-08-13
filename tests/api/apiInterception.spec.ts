@@ -12,7 +12,7 @@ send the fake data/generate fake
 */
 
 
-//wildcard operator: **/* : match evey url or request
+//wildcard operator: **/* : means match all URLs/resources, so the route handler can intercept requests for documents, JavaScript, CSS, images, API calls, fonts, etc.
 //It will intercept all network request by the browser and print it method type and url
 
 import {test,expect} from "@playwright/test"
@@ -35,24 +35,25 @@ test("API Iterception: observe the api request",async({page})=>{
 
 })
 
-test("API Interception-Block the current request",async({page})=>{
+test("API Interception - Block the current request", async ({ page }) => {
 
+    await page.route(
+        "https://tutorialsninja.com/demo/index.php?",
+        async (route) => {
 
-    await page.route("https://tutorialsninja.com/demo/index.php?",async(route)=>{
+            console.log("Request Intercepted...");
 
-        console.log("Request Intercepted...");
-        
-        await route.abort();
-    })
+            await route.abort();
+        }
+    );
 
-    await page.goto("https://tutorialsninja.com/demo/index.php?");
+    try {
+        await page.goto("https://tutorialsninja.com/demo/index.php?");
+    } catch (error) {
+        console.log("Request was blocked successfully");
+    }
 
-
-await page.waitForTimeout(2000);
-
-})
-
-
+});
 test("Mocking the APi Response",async({page})=>{
 
     let fakeResponse={

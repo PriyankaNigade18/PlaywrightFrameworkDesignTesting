@@ -17,37 +17,65 @@ this.request=request;
 
 //public method
 
-async get(endpoint:string,headers?:Record<string,string>)
-{
+async get(
+    endpoint: string,
+    headers?: Record<string, string>
+) {
 
-    let response=await this.request.get(`${this.baseUrl}${endpoint}`,{
-        headers:headers
-    });
-
-   return  {
-        status:response.status(),
-        statusMessage:response.statusText(),
-        body:await response.json()
-
+    const response = await this.request.get(
+        `${this.baseUrl}${endpoint}`,
+        {
+            headers
         }
+    );
+
+    const text = await response.text();
+
+    let body;
+
+    try {
+        body = JSON.parse(text);
+    } catch {
+        body = text;
+    }
+
+    return {
+        status: response.status(),
+        statusMessage: response.statusText(),
+        body
+    };
 }
 
-async post(endpoint:string,payload:object,headers?:Record<string,string>)
-{
-    let response=await this.request.post(`${this.baseUrl}${endpoint}`,{
-        headers:headers,
-        data:payload
-    });
+async post(
+    endpoint: string,
+    payload: object,
+    headers?: Record<string, string>
+) {
 
-    return  {
-        status:response.status(),
-        statusMessage:response.statusText(),
-        body:await response.json()
-
+    const response = await this.request.post(
+        `${this.baseUrl}${endpoint}`,
+        {
+            headers,
+            data: payload
         }
-    
-}
+    );
 
+    const text = await response.text();
+
+    let body;
+
+    try {
+        body = JSON.parse(text);
+    } catch {
+        body = text;
+    }
+
+    return {
+        status: response.status(),
+        statusMessage: response.statusText(),
+        body
+    };
+}
 async put(endpoint:string,payload:object,headers?:Record<string,string>)
 {
      let response=await this.request.put(`${this.baseUrl}${endpoint}`,{
