@@ -1,0 +1,73 @@
+https://allurereport.org/docs/playwright/
+
+Step1:To install Allure
+npm install --save-dev allure-playwright allure-commandline
+
+Step2:in playwright config.js
+reporter:[['allure-playwright',] ]
+
+Step3: Run test
+
+Step4:to generate allure report
+npx allure generate allure-results --clean -o allure-report
+
+step5: to open report
+npx allure open allure-report
+
+6. environment variable/ configuration
+===================================================
+1.for enviornment we have dotenv package avialable by default
+create config folder in project
+
+create .env.qa file, .env.dev , .env.stage
+store some config data
+
+2. goto terminal and add package
+ npm install dotenv
+
+then to read data from file goto pw.config.json 
+add import dotenv from 'dotenv';
+
+then add
+ const ENV=process.env.ENV ||"qa" this is for default qa
+dotenv.config({path:'config./env.${ENV});
+then in use{
+baseUrl: process.env.BASE_URL,
+}
+
+To run on specific env on windows machine
+----------------------------
+ $env:ENV="qa"; npx playwright test
+
+For Mac/Linux
+---------------------------
+ENV=qa npx playwright test
+==================================================
+
+For Enviornment 
+1.install cross enviornment
+npm install --save-dev cross-env
+2.update script : it will run only through script
+"scripts": {
+  "env:dev": "cross-env ENV=dev playwright test",
+  "env:qa": "cross-env ENV=qa playwright test"
+}
+3. run in powsershell
+npm run env:qa
+
+
+Add csvhelper
+1.create csv file
+2.to read csv file install csv-parse library
+npm install csv-parse
+3.create csvHelper under Utils folder
+4. To add and validate errors now create error message locator in page file
+
+
+Add Excel utility
+1.create Excel file in project
+2.Install excellibrary npm install xlsx
+3.create helper and test it
+
+
+
