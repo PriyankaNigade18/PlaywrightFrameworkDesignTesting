@@ -33,7 +33,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run UI tests
-        run: npx playwright test --project=chromium --ignore-pattern="**/api/**"
+        run: npx playwright test --project=ui
         env:
           ENV: qa
           APPBASEURL: ${{ secrets.APPBASEURL }}
