@@ -990,7 +990,7 @@ jobs:
 
         with:
           name: allure-report-zip
-           path: .
+          path: .
 
       - name: Verify email configuration
         run: |
