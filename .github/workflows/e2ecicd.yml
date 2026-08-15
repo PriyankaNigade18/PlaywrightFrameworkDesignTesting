@@ -908,22 +908,22 @@ jobs:
 
   deploy-report:
 
-  name: Deploy Dashboard & Reports
+    name: Deploy Dashboard & Reports
 
-  needs: ui-tests
+    needs: ui-tests
 
-  if: always()
+    if: always()
 
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-  environment:
+    environment:
     name: github-pages
     url: ${{ steps.deployment.outputs.page_url }}
 
-  outputs:
+    outputs:
     page_url: ${{ steps.deployment.outputs.page_url }}
 
-  steps:
+    steps:
 
     - name: Deploy to GitHub Pages
 
@@ -953,10 +953,10 @@ jobs:
         echo "${{ steps.deployment.outputs.page_url }}html/index.html"
 
         echo "=================================================="
-  # ============================================================
-  # JOB 3
-  # SEND GMAIL
-  # ============================================================
+    # ============================================================
+    # JOB 3
+    # SEND GMAIL
+    # ============================================================
 
   send-email:
 
