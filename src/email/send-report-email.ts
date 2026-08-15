@@ -26,7 +26,7 @@ async function sendEmail() {
     }
     if (!recipient) {
         throw new Error(
-            'STUDENT_EMAIL is missing.'
+            'STUDENT_EMAILS is missing.'
         );
     }
     const transporter = nodemailer.createTransport({

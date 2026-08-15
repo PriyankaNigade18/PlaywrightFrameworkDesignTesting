@@ -990,24 +990,26 @@ jobs:
 
         with:
           name: allure-report-zip
-          path: .
+           path: .
 
-
-      - name: Send Allure Report Email
-
+      - name: Verify email configuration
         run: |
-
-          npx tsx src/email/send-report-email.ts
-
+         if [ -n "$STUDENT_EMAILS" ]; then
+            echo "✅ STUDENT_EMAILS is available"
+         else
+            echo "❌ STUDENT_EMAILS is missing"
+         fi
         env:
-
+          STUDENT_EMAILS: ${{ secrets.STUDENT_EMAILS }}
+          
+      - name: Send Allure Report Email
+        run: |
+          npx tsx src/email/send-report-email.ts
+        env:
           MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
-
           MAIL_APP_PASSWORD: ${{ secrets.MAIL_APP_PASSWORD }}
-
           ALLURE_REPORT_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
-
-          STUDENT_EMAIL: ${{ secrets.STUDENT_EMAILS }}
+          STUDENT_EMAILS: ${{ secrets.STUDENT_EMAILS }}
 
 
   # ============================================================
