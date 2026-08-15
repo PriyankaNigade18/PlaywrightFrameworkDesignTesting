@@ -1,4 +1,4 @@
-name: Playwright cache Tests
+name: Playwright CompanyDetails Tests
 
 on:
   schedule:
@@ -18,6 +18,10 @@ on:
           - QA
           - stage
           - dev
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   test:
@@ -85,6 +89,30 @@ jobs:
         if: always()
         run: |
           node src/allure/customize-allure-report.js
+        
+      - name: Setup GitHub Pages
+        if: always()
+        uses: actions/configure-pages@v5
+
+      - name: Create Allure Report ZIP
+        if: always()
+        run: |
+          zip -r allure-report.zip allure-report
+
+      - name: Upload Allure Report to GitHub Pages
+        if: always()
+        uses: actions/upload-pages-artifact@v4
+        with:
+        path: './allure-report'
+
+      - name: Deploy Allure Report to GitHub Pages
+        if: always()
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Display Allure Report URL
+        run: |
+          echo "Allure Report: ${{ steps.deployment.outputs.page_url }}"
 
       - name: Upload Allure Results
         if: always()
@@ -93,3 +121,11 @@ jobs:
           name: allure-report
           path: allure-report/
           retention-days: 30
+
+      - name: Send Allure Report Email
+        if: always()
+        run: |
+          npx tsx src/email/send-report-email.ts
+        env:
+          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+          MAIL_APP_PASSWORD: ${{ secrets.MAIL_APP_PASSWORD }}
