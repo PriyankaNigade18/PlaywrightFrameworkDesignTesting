@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import globalSetup from './global-setup.js';
 
 /**
  * Read environment variables from file.
@@ -21,6 +22,7 @@ const result = dotenv.config({
  */
 export default defineConfig({
   testDir: './tests',
+  globalSetup:'./global-setup.ts',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
