@@ -77,44 +77,31 @@ Regards,
 Automation Team
 `,
 
-        html: `
-            <h2>Playwright Automation Report</h2>
+ html: `
+    <h2>🎭 Playwright Automation Report</h2>
 
-            <p>Hello,</p>
+    <p>Playwright UI automation execution has completed.</p>
 
-            <p>
-                Playwright automation execution has completed.
-            </p>
+    <p>
+        <strong>Environment:</strong> QA<br>
+        <strong>Browser:</strong> Chromium
+    </p>
 
-            <p>
-                <strong>Environment:</strong> QA<br>
-                <strong>Framework:</strong> Playwright<br>
-                <strong>Browser:</strong> Chromium
-            </p>
-
-            <p>
-                Click the button below to view the complete Allure Report:
-            </p>
-
-            <p>
-                <a href="${reportUrl}"
-                   style="
-                       display:inline-block;
-                       padding:12px 20px;
-                       background:#1976d2;
-                       color:white;
-                       text-decoration:none;
-                       border-radius:5px;
-                   ">
-                    View Allure Report
-                </a>
-            </p>
-
-            <p>
-                Regards,<br>
-                Automation Team
-            </p>
-        `
+    <p>
+        <a href="${reportUrl}"
+           style="
+             display:inline-block;
+             padding:12px 20px;
+             background:#1976d2;
+             color:white;
+             text-decoration:none;
+             border-radius:5px;">
+             
+             📊 View Playwright Report Dashboard
+             
+        </a>
+    </p>
+`
     });
 
     console.log('8️⃣ Email sent successfully.');

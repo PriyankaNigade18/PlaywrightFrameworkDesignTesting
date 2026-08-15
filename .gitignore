@@ -42,3 +42,16 @@ npm-debug.log*
 
 # misc
 *.tgz
+
+# Playwright reports
+reports/
+
+# Allure
+allure-results/
+allure-report/
+
+# Generated GitHub Pages dashboard
+pages-deploy/
+
+# ZIP reports
+allure-report.zip
