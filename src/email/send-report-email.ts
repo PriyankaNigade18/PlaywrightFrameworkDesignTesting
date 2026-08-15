@@ -1,6 +1,4 @@
 import nodemailer from 'nodemailer';
-import fs from 'fs';
-import path from 'path';
 
 async function sendEmail() {
 
@@ -8,9 +6,12 @@ async function sendEmail() {
 
     const username = process.env.MAIL_USERNAME;
     const password = process.env.MAIL_APP_PASSWORD;
+    const reportUrl = process.env.ALLURE_REPORT_URL;
+    const recipient = process.env.STUDENT_EMAILS;
 
     console.log('2️⃣ Username available:', !!username);
     console.log('3️⃣ Password available:', !!password);
+    console.log('4️⃣ Allure URL available:', !!reportUrl);
 
     if (!username || !password) {
         throw new Error(
@@ -18,40 +19,44 @@ async function sendEmail() {
         );
     }
 
-    const reportPath = path.join(
-        process.cwd(),
-        'allure-report.zip'
-    );
-
-    console.log('4️⃣ Checking report:', reportPath);
-
-    if (!fs.existsSync(reportPath)) {
+    if (!reportUrl) {
         throw new Error(
-            `Allure report ZIP not found: ${reportPath}`
+            'ALLURE_REPORT_URL is missing.'
         );
     }
-
-    console.log('5️⃣ Report ZIP found.');
-
+    if (!recipient) {
+        throw new Error(
+            'STUDENT_EMAIL is missing.'
+        );
+    }
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+
         auth: {
             user: username,
             pass: password
-        }
+        },
+
+        connectionTimeout: 10000,
+        greetingTimeout: 10000,
+        socketTimeout: 30000
     });
 
-    console.log('6️⃣ SMTP transporter created.');
+    console.log('5️⃣ SMTP transporter created.');
 
     await transporter.verify();
 
-    console.log('7️⃣ Gmail SMTP connection successful.');
+    console.log('6️⃣ Gmail SMTP connection successful.');
 
-    await transporter.sendMail({
+    console.log('7️⃣ Sending email...');
+
+    const info = await transporter.sendMail({
 
         from: username,
 
-        to: username,
+        to: recipient,
 
         subject: 'Playwright Automation - Allure Report',
 
@@ -64,21 +69,56 @@ Environment: QA
 Framework: Playwright
 Browser: Chromium
 
-Please find the Allure report attached.
+View the Allure Report:
+
+${reportUrl}
 
 Regards,
 Automation Team
 `,
 
-        attachments: [
-            {
-                filename: 'allure-report.zip',
-                path: reportPath
-            }
-        ]
+        html: `
+            <h2>Playwright Automation Report</h2>
+
+            <p>Hello,</p>
+
+            <p>
+                Playwright automation execution has completed.
+            </p>
+
+            <p>
+                <strong>Environment:</strong> QA<br>
+                <strong>Framework:</strong> Playwright<br>
+                <strong>Browser:</strong> Chromium
+            </p>
+
+            <p>
+                Click the button below to view the complete Allure Report:
+            </p>
+
+            <p>
+                <a href="${reportUrl}"
+                   style="
+                       display:inline-block;
+                       padding:12px 20px;
+                       background:#1976d2;
+                       color:white;
+                       text-decoration:none;
+                       border-radius:5px;
+                   ">
+                    View Allure Report
+                </a>
+            </p>
+
+            <p>
+                Regards,<br>
+                Automation Team
+            </p>
+        `
     });
 
     console.log('8️⃣ Email sent successfully.');
+    console.log('Message ID:', info.messageId);
 }
 
 sendEmail().catch(error => {
