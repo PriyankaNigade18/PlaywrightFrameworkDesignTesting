@@ -94,16 +94,11 @@ jobs:
         if: always()
         uses: actions/configure-pages@v5
 
-      - name: Create Allure Report ZIP
-        if: always()
-        run: |
-          zip -r allure-report.zip allure-report
-
       - name: Upload Allure Report to GitHub Pages
         if: always()
         uses: actions/upload-pages-artifact@v4
         with:
-        path: './allure-report'
+          path: './allure-report'
 
       - name: Deploy Allure Report to GitHub Pages
         if: always()
@@ -111,8 +106,12 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Display Allure Report URL
+        if: success()
         run: |
-          echo "Allure Report: ${{ steps.deployment.outputs.page_url }}"
+          echo "======================================"
+          echo "Allure Report:"
+          echo "${{ steps.deployment.outputs.page_url }}"
+          echo "======================================"
 
       - name: Upload Allure Results
         if: always()
