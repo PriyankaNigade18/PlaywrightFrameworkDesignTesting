@@ -1,4 +1,4 @@
-name: Playwright UI CI/CD Pipeline
+name: Playwright E2E UI CI/CD Pipeline
 
 on:
 
@@ -969,6 +969,7 @@ jobs:
 
         uses: actions/checkout@v4
 
+
       - name: Setup Node.js
 
         uses: actions/setup-node@v4
@@ -977,9 +978,11 @@ jobs:
           node-version: 24
           cache: 'npm'
 
+
       - name: Install dependencies
 
         run: npm ci
+
 
       - name: Download Allure Report ZIP
 
@@ -988,6 +991,7 @@ jobs:
         with:
           name: allure-report-zip
           path: .
+
 
       - name: Send Allure Report Email
 
@@ -1001,7 +1005,7 @@ jobs:
 
           MAIL_APP_PASSWORD: ${{ secrets.MAIL_APP_PASSWORD }}
 
-          ALLURE_REPORT_URL: ${{ needs.deploy-report.outputs.page_url }}
+          ALLURE_REPORT_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
 
           STUDENT_EMAIL: ${{ secrets.STUDENT_EMAILS }}
 
