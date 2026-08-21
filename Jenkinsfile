@@ -52,7 +52,7 @@ pipeline {
             steps {
 
                 echo '======================================'
-                echo 'CHECK NODE'
+                echo 'CHECK NODE SETUP'
                 echo '======================================'
 
                 nodejs('Node24') {
