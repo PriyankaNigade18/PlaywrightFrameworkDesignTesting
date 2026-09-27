@@ -1,0 +1,173 @@
+[
+ {
+  "time": 1790439869193,
+  "duration": 27298.606,
+  "passed": 38,
+  "failed": 2,
+  "flaky": 0,
+  "skipped": 0,
+  "total": 40,
+  "tests": {
+   "chromium::tests/api/apiInterception.spec.ts::API Iterception: observe the api request": [
+    "p",
+    5937
+   ],
+   "chromium::tests/api/apiInterception.spec.ts::API Interception - Block the current request": [
+    "p",
+    2451
+   ],
+   "chromium::tests/api/apiInterception.spec.ts::Mocking the APi Response": [
+    "p",
+    3792
+   ],
+   "chromium::tests/api/usergorestapitest.spec.ts::GET:all user details": [
+    "p",
+    281
+   ],
+   "chromium::tests/api/usergorestapitest.spec.ts::POST: create new user ": [
+    "p",
+    291
+   ],
+   "chromium::tests/api/usergorestapitest.spec.ts::PUT: Update user": [
+    "p",
+    313
+   ],
+   "chromium::tests/api/usergorestapitest.spec.ts::DELETE: delete exesting user": [
+    "p",
+    124
+   ],
+   "chromium::tests/api/usergorestapitest2_ApiChaining.spec.ts::This is API suite › Post-Test for NewUser": [
+    "p",
+    134
+   ],
+   "chromium::tests/api/usergorestapitest2_ApiChaining.spec.ts::This is API suite › Get- the newely created user": [
+    "p",
+    128
+   ],
+   "chromium::tests/api/usergorestapitest2_ApiChaining.spec.ts::This is API suite › PUT- user user record": [
+    "p",
+    442
+   ],
+   "chromium::tests/api/usergorestapitest3_fixturetest.spec.ts::Get- all users": [
+    "p",
+    148
+   ],
+   "chromium::tests/api/usergorestapitest3_fixturetest.spec.ts::Get-single user record": [
+    "p",
+    743
+   ],
+   "chromium::tests/api/usergorestapitest3_fixturetest.spec.ts::PUT-update user": [
+    "p",
+    532
+   ],
+   "chromium::tests/api/usergorestapitest3_fixturetest.spec.ts::DELETE- delete resource from server": [
+    "p",
+    508
+   ],
+   "chromium::tests/api/usergorestapitest5.api.schemaValidation.spec.ts::Get- single user schema validation": [
+    "p",
+    467
+   ],
+   "chromium::tests/api/usergorestapitest5.api.schemaValidation.spec.ts::Schema validation for Array of Objects": [
+    "p",
+    365
+   ],
+   "chromium::tests/cartPageFixture.spec.ts::Test for Cart product details": [
+    "p",
+    4145
+   ],
+   "chromium::tests/cartPageFixture.spec.ts::Test for product remove from cart": [
+    "f",
+    6187
+   ],
+   "chromium::tests/cartPageFixture.spec.ts::Test for continueshopping option": [
+    "p",
+    5806
+   ],
+   "chromium::tests/cartPageFixture.spec.ts::Test for Checkout option": [
+    "p",
+    8525
+   ],
+   "chromium::tests/checkoutFixture.spec.ts::Test for checkout process": [
+    "p",
+    4259
+   ],
+   "chromium::tests/inventoryFixture.spec.ts::Test for InventoryPage title": [
+    "p",
+    2464
+   ],
+   "chromium::tests/inventoryFixture.spec.ts::Test for Total Product count from InventoryPage": [
+    "f",
+    3014
+   ],
+   "chromium::tests/inventoryFixture.spec.ts::Test for getting product details": [
+    "p",
+    1884
+   ],
+   "chromium::tests/inventoryFixture.spec.ts::Test for Selecting product": [
+    "p",
+    2008
+   ],
+   "chromium::tests/loginpageFixture.spec.ts::Test for loginPageTitle": [
+    "p",
+    1153
+   ],
+   "chromium::tests/loginpageFixture.spec.ts::Test for APP URL": [
+    "p",
+    1459
+   ],
+   "chromium::tests/loginpageFixture.spec.ts::Tets for Login functionality with valid data": [
+    "p",
+    3665
+   ],
+   "chromium::tests/loginpageFixture.spec.ts::Test for invalid login with CSV data admin": [
+    "p",
+    1807
+   ],
+   "chromium::tests/loginpageFixture.spec.ts::Test for invalid login with CSV data geeta": [
+    "p",
+    1923
+   ],
+   "chromium::tests/loginpageFixture.spec.ts::Test for invalid login with CSV data sujit": [
+    "p",
+    2416
+   ],
+   "chromium::tests/loginpageFixture.spec.ts::Test for invalid login with Json data amit": [
+    "p",
+    1556
+   ],
+   "chromium::tests/loginpageFixture.spec.ts::Test for invalid login with Json data Priyanka": [
+    "p",
+    1836
+   ],
+   "chromium::tests/loginpageFixture.spec.ts::Test for invalid login with Json data Jay": [
+    "p",
+    1982
+   ],
+   "chromium::tests/loginpageFixture.spec.ts::Test for invalid login  Admin with excel data ": [
+    "p",
+    3030
+   ],
+   "chromium::tests/loginpageFixture.spec.ts::Test for invalid login  Riya with excel data ": [
+    "p",
+    2476
+   ],
+   "chromium::tests/loginpageFixture.spec.ts::Test for invalid login  Kiran with excel data ": [
+    "p",
+    1841
+   ],
+   "chromium::tests/loginpageFixture.spec.ts::Test for invalid login  Mahesh with excel data ": [
+    "p",
+    2444
+   ],
+   "chromium::tests/overviewpageFixture.spec.ts::Test for payment details": [
+    "p",
+    3698
+   ],
+   "chromium::tests/overviewpageFixture.spec.ts::Test for finish checkout process": [
+    "p",
+    3566
+   ]
+  }
+ }
+]

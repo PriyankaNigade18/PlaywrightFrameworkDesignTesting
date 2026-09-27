@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 import globalSetup from './global-setup.js';
-
+ import reportingLabs from './reporting-labs.config.js';
+  
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -36,7 +37,7 @@ export default defineConfig({
       outputFolder: 'reports/html-report',
       open: 'never'
     }],
-    ['allure-playwright']],
+    ['allure-playwright'],['reporting-labs', reportingLabs]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
